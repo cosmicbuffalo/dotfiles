@@ -164,41 +164,6 @@ function tmuxkill() {
 }
 # }}}
 
-# Alias' {{{
-alias vi="~/nvim-macos/bin/nvim"
-alias r="source ~/.zshrc"
-alias tmuxsrc="tmux source ~/.config/tmux/tmux.conf"
-alias tat='tmux new-session -As $(basename "$PWD" | tr . -)' # will attach if session exists, or create a new session
-alias tmuxkillall="tmux ls | cut -d : -f 1 | xargs -I {} tmux kill-session -t {}" # tmux kill all sessions
-alias ct="ctags -R --exclude=.git --exclude=node_modules"
-alias dotfiles="ls -a | grep '^\.' | grep --invert-match '\.DS_Store\|\.$'"
-alias redux_rspec="HEADLESS=false REDUX_DEVTOOLS_IN_TEST=true bundle exec rspec"
-alias rspec="bundle exec rspec"
-alias serve="bundle exec rails s"
-alias con="bundle exec rails c"
-alias prod_console="heroku run rails c -a blitzinsurance-prod -s Standard-2X"
-alias dev="bin/dev"
-alias devs="bin/dev-static"
-alias migrate="rails db:migrate"
-alias clean_branches='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
-alias pr='open "https://github.com/$(git remote get-url origin | sed -E "s/.*:(.+)\/(.+).git/\1\/\2/")/pull/new/$(git rev-parse --abbrev-ref HEAD)"'
-alias eslint_bundles="npx eslint ./app/javascript/bundles --ext .js,.jsx --fix"
-alias gb="git branch"
-alias gs="git status"
-alias co="git checkout"
-alias gc="git commit -m"
-alias ga="git add"
-alias cb="git checkout -b"
-alias gl="git pull"
-alias gpo="git pull origin main"
-alias gd="git diff"
-alias gpu="git push -u origin $(git rev-parse --abbrev-ref HEAD)"
-alias gp="git push"
-alias blitz="~/blitz_session.sh"
-alias blitz_kill="tmux kill-ses -t blitz"
-alias blitz_restart="blitz_kill && blitz"
-# }}}
-
 # Auto Completion {{{
 autoload -U compinit && compinit
 zmodload -i zsh/complist

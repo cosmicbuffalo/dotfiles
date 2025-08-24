@@ -18,11 +18,11 @@ NVIM_CONFIG_DIR="$HOME/.config/nvim"
 info "Installing tmux, neovim, and zsh..."
 if command -v apt-get &>/dev/null; then
   sudo apt-get update
-  sudo apt-get install -y tmux neovim zsh git curl golang
+  sudo apt-get install -y tmux neovim zsh git curl golang nodejs ripgrep fd-find
 elif command -v brew &>/dev/null; then
-  brew install tmux neovim zsh git curl golang
+  brew install tmux neovim zsh git curl golang nodejs ripgrep fd
 elif command -v pacman &>/dev/null; then
-  sudo pacman -Sy --noconfirm tmux neovim zsh git curl golang
+  sudo pacman -Sy --noconfirm tmux neovim zsh git curl golang nodejs ripgrep fd-find
 else
   echo "Unsupported package manager. Please install dependencies manually." >&2
   exit 1

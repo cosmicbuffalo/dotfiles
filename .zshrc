@@ -264,6 +264,5 @@ function precmd {
   echo -ne "\e]1;$PWD:h:t/$PWD:t\a"
 }
 
-
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/go/bin/:$PATH"

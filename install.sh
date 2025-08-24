@@ -18,11 +18,11 @@ NVIM_CONFIG_DIR="$HOME/.config/nvim"
 info "Installing tmux, neovim, and zsh..."
 if command -v apt-get &>/dev/null; then
   sudo apt-get update
-  sudo apt-get install -y tmux neovim zsh git curl
+  sudo apt-get install -y tmux neovim zsh git curl golang
 elif command -v brew &>/dev/null; then
-  brew install tmux neovim zsh git curl
+  brew install tmux neovim zsh git curl golang
 elif command -v pacman &>/dev/null; then
-  sudo pacman -Sy --noconfirm tmux neovim zsh git curl
+  sudo pacman -Sy --noconfirm tmux neovim zsh git curl golang
 else
   echo "Unsupported package manager. Please install dependencies manually." >&2
   exit 1
@@ -31,6 +31,11 @@ fi
 info "Installing Rust..."
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
+info "Installing stylua..."
+cargo install stylua
+
+info "Installing Lazygit..."
+go install github.com/jesseduffield/lazygit@latest
 
 # --- Clone dotfiles repo ---
 if [ ! -d "$DOTFILES_DIR" ]; then

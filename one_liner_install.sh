@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
+
+# This install script can be run with a single command:
+# curl -fsSL https://raw.githubusercontent.com/cosmicbuffalo/dotfiles/main/install.sh | bash
+
+
 set -euo pipefail
 
 info() { echo -e "\033[1;32m[INFO]\033[0m $*"; }
 
 # --- Configuration ---
-DOTFILES_REPO="https://github.com/YOUR-USERNAME/dotfiles.git"
-NVIM_CONFIG_REPO="https://github.com/YOUR-USERNAME/nvim-config.git"
+DOTFILES_REPO="https://github.com/cosmicbuffalo/dotfiles.git"
+NVIM_CONFIG_REPO="https://github.com/cosmicbuffalo/nvim.git"
 DOTFILES_DIR="$HOME/.dotfiles"
 NVIM_CONFIG_DIR="$HOME/.config/nvim"
 
@@ -22,6 +27,10 @@ else
   echo "Unsupported package manager. Please install dependencies manually." >&2
   exit 1
 fi
+
+info "Installing Rust..."
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
 
 # --- Clone dotfiles repo ---
 if [ ! -d "$DOTFILES_DIR" ]; then
